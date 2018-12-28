@@ -25,6 +25,7 @@ public class DBViewer extends Activity {
         db=new DatabaseHelper(this);
         Cursor data=db.getData();
 
+        /*  VISUALIZZATORE D'EMERGENZA DATABASE: NON FA USO DELLA LISTVIEW MA VISUALIZZA IN UN POPUP
         StringBuffer buffer = new StringBuffer();
         data.moveToFirst();
         while (!data.isAfterLast()) {
@@ -36,22 +37,17 @@ public class DBViewer extends Activity {
             data.moveToNext();
         }
 
-        // Show all data
-        //showMessage("Data",buffer.toString());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Database");
+        builder.setMessage(buffer.toString());
+        builder.show();
+        */
 
         DBAdapter dbAdapter = new DBAdapter(this,data);
-
         listView=findViewById(R.id.listView);
         listView.setAdapter(dbAdapter);
 
 
-    }
-
-    public void showMessage(String title,String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
     }
 }

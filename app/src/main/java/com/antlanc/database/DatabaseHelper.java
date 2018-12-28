@@ -3,6 +3,8 @@ package com.antlanc.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.MatrixCursor;
+import android.database.MergeCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -33,9 +35,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLS[0] + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLS[1] + " TEXT, " +
-                COLS[2] + " INTEGER, " +
-                COLS[3] + " INTEGER, " +
-                COLS[4] + " INTEGER);";
+                COLS[2] + " TEXT, " +
+                COLS[3] + " TEXT, " +
+                COLS[4] + " TEXT);";
         Log.d("CREAZIONE TABELLA", createTable);
         db.execSQL(createTable);
     }
@@ -47,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    boolean addRecord(String date, int c1, int c2, int time){
+    boolean addRecord(String date, String c1, String c2, String time){
         SQLiteDatabase db=this.getWritableDatabase();
         Log.d("DB",db.toString());
         ContentValues contentValues=new ContentValues();
@@ -66,8 +68,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     Cursor getData(){
         SQLiteDatabase db=this.getWritableDatabase();
-        String query="SELECT * FROM "+TABLE_NAME;
-        return db.rawQuery(query,null);
+
+        //Creazione prima riga (header)
+        MatrixCursor header=new MatrixCursor(COLS);
+        MatrixCursor.RowBuilder rb = header.newRow();
+        rb.add(0);  //al posto di _id ci metto 0 perché la colonna è INTEGER
+        for (int i=1; i<COLS.length; i++) rb.add(COLS[i]);
+
+        //Query che legge l'intero DB
+        String query="SELECT * FROM "+TABLE_NAME+" ORDER BY "+COLS[1]+" DESC";
+        //Log.d("QUERY", query);
+        //la query viene eseguita all'interno del comando sottostante con db.rawQuery(query,null), il resto serve ad unire l'header al risultato della query
+        return new MergeCursor(new Cursor[]{header,db.rawQuery(query,null)});
     }
 
 }

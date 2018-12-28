@@ -3,6 +3,7 @@ package com.antlanc.database;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import static java.text.DateFormat.getDateInstance;
@@ -37,12 +39,11 @@ public class MainActivity extends Activity {
         ins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
                 sdf.setTimeZone(TimeZone.getDefault());
                 String date = sdf.format(new Date());
 
-
-                boolean cs=db.addRecord(date,Integer.parseInt(c1.getText().toString()),Integer.parseInt(c2.getText().toString()),Integer.parseInt(t.getText().toString()));
+                boolean cs=db.addRecord(date,c1.getText().toString(),c2.getText().toString(),t.getText().toString());
                 if (cs) Toast.makeText(getApplicationContext(), "AGGIUNTO RECORD", Toast.LENGTH_SHORT).show();
                 c1.setText("");
                 c2.setText("");

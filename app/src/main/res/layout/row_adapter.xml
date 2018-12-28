@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:ignore="HardcodedText,RtlSymmetry" >
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:ignore="HardcodedText,RtlSymmetry">
 
 
     <TextView
@@ -16,7 +15,7 @@
         android:layout_weight="49"
         android:background="#FFFFFF"
         android:paddingEnd="5dp"
-        android:text="TextView"
+        android:text="Date Time"
         android:textAlignment="viewEnd" />
 
     <TextView
@@ -27,7 +26,7 @@
         android:layout_weight="17"
         android:background="#FFFFFF"
         android:paddingEnd="5dp"
-        android:text="TextView"
+        android:text="Cents 1"
         android:textAlignment="viewEnd" />
 
     <TextView
@@ -38,7 +37,7 @@
         android:layout_weight="17"
         android:background="#FFFFFF"
         android:paddingEnd="5dp"
-        android:text="TextView"
+        android:text="Cents 2"
         android:textAlignment="viewEnd" />
 
     <TextView
@@ -49,6 +48,6 @@
         android:layout_weight="17"
         android:background="#FFFFFF"
         android:paddingEnd="5dp"
-        android:text="TextView"
+        android:text="Time"
         android:textAlignment="viewEnd" />
 </LinearLayout>
