@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText,RtlSymmetry" >
+
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        android:layout_weight="49"
+        android:background="#FFFFFF"
+        android:paddingEnd="5dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd" />
+
+    <TextView
+        android:id="@+id/textViewSound1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        android:layout_weight="17"
+        android:background="#FFFFFF"
+        android:paddingEnd="5dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd" />
+
+    <TextView
+        android:id="@+id/textViewSound2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        android:layout_weight="17"
+        android:background="#FFFFFF"
+        android:paddingEnd="5dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        android:layout_weight="17"
+        android:background="#FFFFFF"
+        android:paddingEnd="5dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd" />
+</LinearLayout>
